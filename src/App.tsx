@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { Movie as MovieProps } from "./components/static";
 import { Box, ErrorMessage, Loader, Main, NavBar, NumResults, Search } from "./components/common";
 import { MovieList } from "./components/MovieList";
 import { MovieDetails } from "./components/MovieDetails";
