@@ -1,12 +1,24 @@
 import { Box, ErrorMessage, Loader, Main, NavBar, NumResults, Search } from "./components/common";
 import { MovieList } from "./components/MovieList";
-import { MovieDetails } from "./components/MovieDetails";
+import { MovieDetails } from "./components/MovieDetails/MovieDetails";
 import { WatchedSummary } from "./components/WatchedSummary";
 import { WatchedMoviesList } from "./components/WatchedMoviesList";
 import useApp from "./App.logic";
 
 export default function App(): JSX.Element {
-    const { query, setQuery, movies, isLoading, watched, error, selectedId, handleSelectMovie, handleAddWatched, handleDeleteWatched, handleCloseMovie } = useApp();
+    const {
+        query,
+        setQuery,
+        movies,
+        isLoading,
+        watched,
+        error,
+        selectedId,
+        handleSelectMovie,
+        handleAddWatched,
+        handleDeleteWatched,
+        handleCloseMovie,
+    } = useApp();
     return (
         <>
             <NavBar>
@@ -23,7 +35,12 @@ export default function App(): JSX.Element {
 
                 <Box>
                     {selectedId ? (
-                        <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} onAddWatched={handleAddWatched} watched={watched} />
+                        <MovieDetails
+                            selectedId={selectedId}
+                            onCloseMovie={handleCloseMovie}
+                            onAddWatched={handleAddWatched}
+                            watched={watched}
+                        />
                     ) : (
                         <>
                             <WatchedSummary watched={watched} />
