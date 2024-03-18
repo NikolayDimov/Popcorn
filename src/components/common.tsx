@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Movie } from "./static";
 
 export function Loader(): JSX.Element {
@@ -32,7 +32,30 @@ export function Logo(): JSX.Element {
 }
 
 export function Search({ query, setQuery }: { query: string; setQuery: React.Dispatch<React.SetStateAction<string>> }): JSX.Element {
-    return <input className="search" type="text" placeholder="Search movies..." value={query} onChange={(e) => setQuery(e.target.value)} />;
+    const inputEl = useRef<HTMLInputElement>(null);
+
+    useEffect(function () {
+        if (inputEl.current) {
+            inputEl.current.focus();
+        }
+    }, []);
+    // useEffect(function () {
+    //     const el = document.querySelector(".search") as HTMLInputElement | null;
+    //     console.log(el);
+    //     if (el) {
+    //         el.focus();
+    //     }
+    // }, []);
+    return (
+        <input
+            className="search"
+            type="text"
+            placeholder="Search movies..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            ref={inputEl}
+        />
+    );
 }
 
 export function NumResults({ movies }: { movies: Movie[] }): JSX.Element {
