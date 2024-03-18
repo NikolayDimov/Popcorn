@@ -17,7 +17,6 @@ export function MovieDetails({
     watched: MovieProps[];
 }): JSX.Element {
     const [movie, setMovie] = useState<MovieDetailsProps | null>(null);
-
     const [isLoading, setIsLoading] = useState(false);
     const [userRating, setUserRating] = useState("");
 
