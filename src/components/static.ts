@@ -16,3 +16,7 @@ export interface MovieDetails extends Movie {
     Genre?: string;
     Runtime?: string;
 }
+
+export interface WatchedMovie extends Movie {
+    countRatingDecisions: number;
+}
